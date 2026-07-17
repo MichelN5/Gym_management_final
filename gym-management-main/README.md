@@ -1,57 +1,92 @@
-# Gym Management System
+# Gym Management Frontend
 
-## Overview
-The **Gym Management System** is a web-based application designed to streamline gym operations by digitalizing payment receipts, notifications, and member management. This system eliminates the hassle of paper-based receipts and manual notifications, providing a seamless experience for both gym owners and members.
-
-## Features
-### **Admin Dashboard**
-- Add new members
-- Update or delete member information
-- Create and manage billing
-- Assign fee packages to members
-- Send monthly notifications
-- Export reports
-
-### **User Dashboard**
-- View assigned notifications
-- View personal billing information
+React/Vite frontend for the Gym Management System. It connects to the Django backend for authentication, members, fee packages, payments, bills, notifications, and admin/member dashboard flows.
 
 ## Tech Stack
-- **Frontend:** React.js 
-- **Backend:** Firebase (Firestore for database, Firebase Authentication for user management)
-- **Authentication:** Firebase Auth
-- **Database:** Firebase Firestore
 
-## Logging System
-The system maintains **detailed logs** of user activities, including:
-- Member management actions
-- Billing transactions
-- Notifications sent to members
-- System events for debugging and monitoring
+- React
+- Vite
+- React Router
+- Redux Toolkit
+- Apollo Client
+- Axios
+- DaisyUI / Tailwind-related styling
 
-## Installation & Setup
-1. **Clone the Repository**
-   ```sh
-   git clone https://github.com/your-username/gym-management-system.git
-   cd gym-management-system
-   ```
-2. **Install Dependencies** (If using React for frontend)
-   ```sh
-   npm install
-   ```
-3. **Set Up Firebase**
-   - Create a Firebase project.
-   - Enable Firestore Database and Authentication.
-   - Configure Firebase in your project by adding `firebaseConfig` to your environment variables.
+## Docker
 
-4. **Run the Application**
-   ```sh
-   npm start
-   ```
+Run from the project root:
 
+```bash
+docker compose up --build
+```
 
+The frontend runs at:
 
+```text
+http://127.0.0.1:5173/
+```
 
-## Contact
-For any inquiries, reach out to naoussmichel20005@gmail.com or create an issue in this repository.
+## Local Setup
 
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create an environment file:
+
+```bash
+cp .env.example .env
+```
+
+Run the dev server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+## Environment Variables
+
+| Variable | Purpose |
+|---|---|
+| `VITE_API_URL` | Django REST API base URL |
+| `VITE_GRAPHQL_URL` | Django GraphQL endpoint |
+
+Example:
+
+```text
+VITE_API_URL=http://127.0.0.1:8000
+VITE_GRAPHQL_URL=http://127.0.0.1:8000/graphql/
+```
+
+## Project Structure
+
+```text
+gym-management-main/
+  public/
+  src/
+    apollo/
+    app/
+    components/
+    context/
+    css/
+    hooks/
+    pages/
+    services/
+    slices/
+  Dockerfile
+  package.json
+```

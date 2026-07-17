@@ -1,89 +1,152 @@
 # Gym Management System
 
-## Overview
-The **Gym Management System** is a web-based application designed to streamline gym operations by digitalizing member management, billing, notifications, and workout tracking. This system provides a seamless experience for gym owners, administrators, and members.
+A full-stack gym management application for managing members, fee packages, bills, payments, notifications, users, and workout-related dashboard flows.
 
 ## Features
 
-### **Admin Dashboard**
-- Manage fee packages (add, delete).
-- Enroll and manage gym members.
-- Create and manage billing for members.
-- Send notifications to members.
-- View and manage payment statuses.
-
-### **Member Dashboard**
-- View personal notifications.
-- View and manage billing details.
-- Access workout plans and schedules.
-
-### **Authentication**
-- Login and signup with username and password.
-- Google OAuth integration for easy login.
-
+- Admin and member authentication
+- Admin dashboard
+- Member dashboard
+- Member management
+- Fee package management
+- Billing and payment tracking
+- Notifications
+- Google OAuth callback support
+- REST API with JWT authentication
+- GraphQL endpoint for notifications
+- Dockerized local development setup
 
 ## Tech Stack
 
-### **Frontend**
-- **React.js**: Component-based UI development.
-- **React Router**: For routing and navigation.
-- **React Icons**: For icons and visual enhancements.
+Frontend:
 
+- React
+- Vite
+- React Router
+- Redux Toolkit
+- Apollo Client
+- Axios
+- DaisyUI / Tailwind-related styling
 
-### **API**
-- **Django REST Framework**: Backend API for managing members, fee packages, and billing.
+Backend:
 
+- Python 3.12
+- Django 5.1
+- Django REST Framework
+- Simple JWT
+- django-allauth
+- Graphene Django
+- SQLite for local development
 
-## Installation & Setup
+## Project Structure
 
-### Steps
-1. **Clone the Repository**
-   ```sh
-   git clone https://github.com/MichelN5/Gym_management_final.git
-   ```
+```text
+Gym_management_final/
+  docker-compose.yml
+  django_gym_management/   # Django backend
+  gym-management-main/     # React/Vite frontend
+```
 
-2. **Install Dependencies**
-   ```sh
-   npm install
-   ```
+## Run With Docker
 
+Requirements:
 
-4. **Set Up Environment Variables**
-   - Create a `.env` file in the root directory:
-     ```env
-     VITE_API_URL="http://127.0.0.1:8000/"
-     ```
+- Docker Desktop
+- Docker Compose
 
-5. **Run the Application**
-   ```sh
-   npm run dev
-   ```
+From the project root:
 
-6. **Backend Setup**
-   - Ensure the Django backend is running at `http://127.0.0.1:8000/`.
+```bash
+docker compose up --build
+```
 
-## Usage
+Open the app:
 
-### Admin Features
-- Navigate to `/admin` to access the admin dashboard.
-- Manage fee packages, members, payments, and notifications.
+```text
+http://127.0.0.1:5173/
+```
 
-### Member Features
-- Navigate to `/dashboard` to access the member dashboard.
-- View notifications, bills, and workout plans.
+Backend:
 
-## Scripts
+```text
+http://127.0.0.1:8000/
+```
 
-- **Start Development Server**: `npm run dev`
-- **Build for Production**: `npm run build`
-- **Preview Production Build**: `npm run preview`
-- **Lint Code**: `npm run lint`
+Django admin:
 
-## Contributing
-Contributions are welcome! Please fork the repository and submit a pull request.
+```text
+http://127.0.0.1:8000/admin/
+```
 
-## License
-This project is licensed under the MIT License.
+Seeded development admin:
 
-## Contact
-For any inquiries, reach out to [naoussmichel20005@gmail.com](mailto:naoussmichel20005@gmail.com).
+```text
+username: admin
+password: admin12345
+```
+
+## Local Development
+
+Backend:
+
+```bash
+cd django_gym_management
+python -m venv .venv
+```
+
+On Windows:
+
+```powershell
+.\.venv\Scripts\activate
+```
+
+Install and run:
+
+```bash
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py seed_admin
+python manage.py runserver 127.0.0.1:8000
+```
+
+Frontend:
+
+```bash
+cd gym-management-main
+npm install
+npm run dev
+```
+
+Open:
+
+```text
+http://localhost:5173/
+```
+
+## Environment Files
+
+Backend example:
+
+```text
+django_gym_management/.env.example
+```
+
+Frontend example:
+
+```text
+gym-management-main/.env.example
+```
+
+Do not commit real `.env` files.
+
+## Repository Hygiene
+
+The repository ignores generated/local files such as:
+
+- `.venv/`
+- `node_modules/`
+- `dist/`
+- `db.sqlite3`
+- `__pycache__/`
+- logs
+- real `.env` files
